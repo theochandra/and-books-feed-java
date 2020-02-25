@@ -37,9 +37,15 @@ android {
         development {
             dimension "default"
             applicationIdSuffix ".dev"
+            resValue "string", "app_name", "BooksFeed Dev"
+            buildConfigField "String", "BOOKS_BASE_URL", String.format("\"%s\"", booksBaseUrl)
+            buildConfigField "String", "API_VERSION", String.format("\"%s\"", booksApiVersion)
         }
         production {
             dimension "default"
+            resValue "string", "app_name", "BooksFeed"
+            buildConfigField "String", "BOOKS_BASE_URL", String.format("\"%s\"", booksBaseUrl)
+            buildConfigField "String", "API_VERSION", String.format("\"%s\"", booksApiVersion)
         }
     }
 
