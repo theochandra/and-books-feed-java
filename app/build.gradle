@@ -81,6 +81,9 @@ dependencies {
     // picasso
     implementation "com.squareup.picasso:picasso:$picassoVersion"
 
+    // system bar tint
+    implementation "com.readystatesoftware.systembartint:systembartint:$systemBarVersion"
+
     // unit testing
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$junitTestVersion"

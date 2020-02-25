@@ -31,6 +31,9 @@ buildscript {
         // picasso
         picassoVersion = '2.71828'
 
+        // system bar tint
+        systemBarVersion = '1.0.3'
+
         // unit testing
         junitVersion = '4.12'
         junitTestVersion = '1.1.1'
