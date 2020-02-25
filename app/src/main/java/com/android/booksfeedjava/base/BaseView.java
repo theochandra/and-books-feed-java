@@ -5,5 +5,5 @@ public interface BaseView {
     void showLoadingBar();
 
     void hideLoadingBar();
-    
+
 }
