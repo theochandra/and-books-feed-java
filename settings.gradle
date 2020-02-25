@@ -1,0 +1,2 @@
+rootProject.name='BooksFeedJava'
+include ':app'
