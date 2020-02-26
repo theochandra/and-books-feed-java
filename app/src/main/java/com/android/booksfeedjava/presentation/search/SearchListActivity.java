@@ -2,12 +2,13 @@ package com.android.booksfeedjava.presentation.search;
 
 import android.os.Bundle;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.booksfeedjava.ApplicationComponent;
 import com.android.booksfeedjava.R;
 import com.android.booksfeedjava.base.BaseActivity;
+import com.android.booksfeedjava.component.GridLayoutSpacesItemDecoration;
 import com.android.booksfeedjava.presentation.modelview.BooksModelView;
 
 import java.util.ArrayList;
@@ -54,10 +55,12 @@ public class SearchListActivity extends BaseActivity
     }
 
     private void initRecyclerView() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        int space = getResources().getDimensionPixelSize(R.dimen.margin_horizontal_s);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         mAdapter = new SearchListAdapter(this);
         mRvBookList.setAdapter(mAdapter);
-        mRvBookList.setLayoutManager(linearLayoutManager);
+        mRvBookList.addItemDecoration(new GridLayoutSpacesItemDecoration(space));
+        mRvBookList.setLayoutManager(layoutManager);
         mAdapter.setItemListener(booksModelView -> {
 
         });
