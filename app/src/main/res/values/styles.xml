@@ -30,4 +30,30 @@
         <item name="android:topDark">@android:color/transparent</item>
     </style>
 
+    <style name="CustomCardTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">@dimen/size_0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="CustomCardTextViewTitle" parent="CustomCardTextView">
+        <item name="android:textSize">@dimen/font_size_m</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CustomCardTextViewSubTitle" parent="CustomCardTextView">
+        <item name="android:textSize">@dimen/font_size_s</item>
+    </style>
+
+    <style name="CustomInputBox" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">@dimen/font_size_m</item>
+        <item name="android:paddingLeft">@dimen/padding_m</item>
+        <item name="android:paddingRight">@dimen/padding_m</item>
+        <item name="android:layout_width">@dimen/size_0</item>
+        <item name="android:layout_height">@dimen/input_box_height</item>
+        <item name="android:background">@drawable/bg_selector_input_box</item>
+        <item name="singleLine">true</item>
+    </style>
+
 </resources>

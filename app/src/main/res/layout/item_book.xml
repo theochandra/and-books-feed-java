@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="@dimen/margin_vertical_s"
-    android:layout_marginBottom="@dimen/margin_vertical_s"
-    android:layout_width="@dimen/item_movie_card_width"
-    android:layout_height="@dimen/item_movie_card_height">
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="@dimen/item_book_card_radius"
+    android:layout_marginTop="@dimen/margin_s"
+    android:layout_marginBottom="@dimen/margin_s"
+    android:layout_width="@dimen/item_book_card_width"
+    android:layout_height="@dimen/item_book_card_height">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,19 +17,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/margin_horizontal_m" />
+            app:layout_constraintGuide_begin="@dimen/margin_m" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="@dimen/margin_horizontal_m" />
+            app:layout_constraintGuide_end="@dimen/margin_m" />
 
         <ImageView
             android:id="@+id/iv_book_thumbnail"
             android:layout_width="@dimen/size_0"
-            android:layout_height="@dimen/item_movie_image_height"
+            android:layout_height="@dimen/item_book_image_height"
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -36,26 +37,31 @@
 
         <TextView
             android:id="@+id/tv_book_title"
-            android:layout_width="@dimen/size_0"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textSize="@dimen/font_size_m"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/margin_vertical_m"
+            android:layout_marginTop="@dimen/margin_m"
+            style="@style/CustomCardTextViewTitle"
+            tools:text="Title"
             app:layout_constraintTop_toBottomOf="@+id/iv_book_thumbnail"
             app:layout_constraintLeft_toLeftOf="@id/guideline_left"
             app:layout_constraintRight_toRightOf="@id/guideline_right" />
 
         <TextView
             android:id="@+id/tv_book_authors"
-            android:layout_width="@dimen/size_0"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textSize="@dimen/font_size_s"
-            android:layout_marginTop="@dimen/margin_vertical_s"
+            android:layout_marginTop="@dimen/margin_s"
+            style="@style/CustomCardTextViewSubTitle"
+            tools:text="Authors"
             app:layout_constraintTop_toBottomOf="@+id/tv_book_title"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+            app:layout_constraintRight_toRightOf="@id/guideline_right" />
+
+        <RatingBar
+            android:id="@+id/rb_book_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/ratingBarStyleSmall"
+            android:numStars="5"
+            android:stepSize="0.1"
+            android:layout_marginTop="@dimen/margin_xs"
+            app:layout_constraintTop_toBottomOf="@id/tv_book_authors"
             app:layout_constraintLeft_toLeftOf="@id/guideline_left"
             app:layout_constraintRight_toRightOf="@id/guideline_right" />
 

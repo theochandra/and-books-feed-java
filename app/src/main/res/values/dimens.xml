@@ -4,30 +4,25 @@
 
     <dimen name="vertical_space_toolbar_title">72dp</dimen>
 
-    <dimen name="margin_vertical_s">8dp</dimen>
-    <dimen name="margin_vertical_m">16dp</dimen>
-    <dimen name="margin_vertical_l">24dp</dimen>
-    <dimen name="margin_vertical_xl">32dp</dimen>
+    <dimen name="margin_xs">4dp</dimen>
+    <dimen name="margin_s">8dp</dimen>
+    <dimen name="margin_m">16dp</dimen>
+    <dimen name="margin_l">24dp</dimen>
+    <dimen name="margin_xl">48dp</dimen>
 
-    <dimen name="margin_horizontal_s">8dp</dimen>
-    <dimen name="margin_horizontal_m">16dp</dimen>
-    <dimen name="margin_horizontal_l">24dp</dimen>
-    <dimen name="margin_horizontal_xl">32dp</dimen>
+    <dimen name="padding_s">8dp</dimen>
+    <dimen name="padding_m">16dp</dimen>
+    <dimen name="padding_l">24dp</dimen>
+    <dimen name="padding_xl">48dp</dimen>
 
-    <dimen name="padding_vertical_s">8dp</dimen>
-    <dimen name="padding_vertical_m">16dp</dimen>
-    <dimen name="padding_vertical_l">24dp</dimen>
-    <dimen name="padding_vertical_xl">32dp</dimen>
+    <dimen name="item_book_card_width">180dp</dimen>
+    <dimen name="item_book_card_height">340dp</dimen>
+    <dimen name="item_book_card_radius">8dp</dimen>
+    <dimen name="item_book_image_height">250dp</dimen>
 
-    <dimen name="padding_horizontal_s">8dp</dimen>
-    <dimen name="padding_horizontal_m">16dp</dimen>
-    <dimen name="padding_horizontal_l">24dp</dimen>
-    <dimen name="padding_horizontal_xl">32dp</dimen>
-
-    <dimen name="item_movie_card_width">170dp</dimen>
-    <dimen name="item_movie_card_height">320dp</dimen>
-    <dimen name="item_movie_card_radius">8dp</dimen>
-    <dimen name="item_movie_image_height">250dp</dimen>
+    <dimen name="input_box_stroke_width">1dp</dimen>
+    <dimen name="input_box_height">48dp</dimen>
+    <dimen name="input_box_radius">22dp</dimen>
 
     <!-- font start -->
     <dimen name="font_size_title">20sp</dimen>

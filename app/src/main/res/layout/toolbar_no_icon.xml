@@ -19,14 +19,14 @@
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/margin_horizontal_m" />
+            app:layout_constraintGuide_begin="@dimen/margin_m" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_right"
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="@dimen/margin_horizontal_m" />
+            app:layout_constraintGuide_end="@dimen/margin_m" />
 
         <TextView
             android:id="@+id/tv_toolbar_title"

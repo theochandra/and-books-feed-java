@@ -1,6 +1,8 @@
 package com.android.booksfeedjava.presentation.search;
 
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +23,12 @@ public class SearchListActivity extends BaseActivity
 
     @BindView(R.id.rv_book_list)
     RecyclerView mRvBookList;
+
+    @BindView(R.id.et_search_query)
+    EditText mEtSearchQuery;
+
+    @BindView(R.id.iv_clear_query)
+    ImageView mIvClearQuery;
 
     private SearchListAdapter mAdapter;
 
@@ -55,7 +63,7 @@ public class SearchListActivity extends BaseActivity
     }
 
     private void initRecyclerView() {
-        int space = getResources().getDimensionPixelSize(R.dimen.margin_horizontal_s);
+        int space = getResources().getDimensionPixelSize(R.dimen.margin_s);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         mAdapter = new SearchListAdapter(this);
         mRvBookList.setAdapter(mAdapter);

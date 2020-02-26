@@ -1,10 +1,12 @@
 package com.android.booksfeedjava.presentation.search;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -79,6 +81,9 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Bo
         @BindView(R.id.tv_book_authors)
         TextView mTvBookAuthors;
 
+        @BindView(R.id.rb_book_rating)
+        RatingBar mRbBookRating;
+
         public BookViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -92,6 +97,9 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Bo
                 mTvBookAuthors.setText(authors.substring(0, authors.length() - 2));
             else mTvBookAuthors.setText(authors.toString());
             mTvBookTitle.setText(booksModelView.getTitle());
+
+            Log.d("TEST", "TEST RATING ::: " + booksModelView.getRating());
+            mRbBookRating.setRating(booksModelView.getRating());
             Picasso.get().load(booksModelView.getThumbnailUrl()).into(mIvBookThumbnail);
         }
 

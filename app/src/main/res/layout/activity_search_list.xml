@@ -7,7 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".presentation.search.SearchListActivity">
 
-    <include layout="@layout/toolbar_no_icon" />
+    <include
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/toolbar_no_icon" />
+
+    <include
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_search"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
 
     <!-- guidline -->
     <androidx.constraintlayout.widget.Guideline
@@ -15,22 +26,23 @@
         android:layout_width="@dimen/size_0"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/margin_horizontal_m" />
+        app:layout_constraintGuide_begin="@dimen/margin_m" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_right"
         android:layout_width="@dimen/size_0"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/margin_horizontal_m" />
+        app:layout_constraintGuide_end="@dimen/margin_m" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_book_list"
         android:layout_width="@dimen/size_0"
         android:layout_height="@dimen/size_0"
+        android:layout_marginTop="@dimen/margin_s"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
         app:layout_constraintRight_toRightOf="@+id/guideline_right"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/search_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
