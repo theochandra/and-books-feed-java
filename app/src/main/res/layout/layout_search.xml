@@ -34,11 +34,12 @@
     <EditText
         android:id="@+id/et_search_query"
         android:imeOptions="actionSearch"
+        android:hint="@string/hint_search_query"
+        android:inputType="text"
         android:paddingLeft="@dimen/padding_xl"
         android:paddingRight="@dimen/padding_xl"
         android:layout_marginBottom="@dimen/margin_s"
         style="@style/CustomInputBox"
-        tools:hint="Hint"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@id/guideline_right"

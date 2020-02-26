@@ -1,6 +1,8 @@
 package com.android.booksfeedjava.presentation.search;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -17,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
+import butterknife.OnTextChanged;
 
 public class SearchListActivity extends BaseActivity
     implements SearchListContract.View {
@@ -41,8 +45,8 @@ public class SearchListActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         hideLeftMenu();
         initPresenter();
+        initListener();
         initRecyclerView();
-        retrieveBooksByQuery("Flower");
     }
 
     @Override
@@ -71,6 +75,16 @@ public class SearchListActivity extends BaseActivity
         mRvBookList.setLayoutManager(layoutManager);
         mAdapter.setItemListener(booksModelView -> {
 
+        });
+    }
+
+    private void initListener() {
+        mEtSearchQuery.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                retrieveBooksByQuery(v.getText().toString());
+                return true;
+            }
+            return false;
         });
     }
 
@@ -103,4 +117,17 @@ public class SearchListActivity extends BaseActivity
     public void showErrorLayout() {
 
     }
+
+    @OnTextChanged(R.id.et_search_query)
+    public void onQuerySearchTextChanged(CharSequence text) {
+        if (text.length() != 0)
+            mIvClearQuery.setVisibility(View.VISIBLE);
+        else mIvClearQuery.setVisibility(View.INVISIBLE);
+    }
+
+    @OnClick(R.id.iv_clear_query)
+    public void onClearQueryClicked() {
+        mEtSearchQuery.setText("");
+    }
+
 }

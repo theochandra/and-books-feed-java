@@ -53,7 +53,7 @@
         <item name="android:layout_width">@dimen/size_0</item>
         <item name="android:layout_height">@dimen/input_box_height</item>
         <item name="android:background">@drawable/bg_selector_input_box</item>
-        <item name="singleLine">true</item>
+        <item name="android:singleLine">true</item>
     </style>
 
 </resources>

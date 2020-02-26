@@ -1,7 +1,6 @@
 package com.android.booksfeedjava.presentation.search;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,15 +90,19 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Bo
 
         public void bindData(BooksModelView booksModelView) {
             StringBuilder authors = new StringBuilder();
-            for (String author : booksModelView.getAuthors())
-                authors.append(author).append(", ");
+
+            if (booksModelView.getAuthors() != null) {
+                for (String author : booksModelView.getAuthors())
+                    authors.append(author).append(", ");
+            }
+
             if (authors.length() >= 2)
                 mTvBookAuthors.setText(authors.substring(0, authors.length() - 2));
             else mTvBookAuthors.setText(authors.toString());
-            mTvBookTitle.setText(booksModelView.getTitle());
 
-            Log.d("TEST", "TEST RATING ::: " + booksModelView.getRating());
+            mTvBookTitle.setText(booksModelView.getTitle());
             mRbBookRating.setRating(booksModelView.getRating());
+
             Picasso.get().load(booksModelView.getThumbnailUrl()).into(mIvBookThumbnail);
         }
 
