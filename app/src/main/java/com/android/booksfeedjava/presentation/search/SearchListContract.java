@@ -16,6 +16,10 @@ public interface SearchListContract {
 
         void showDisplayLayout();
 
+        void hideSearchNotFoundLayout();
+
+        void showSearchNotFoundLayout();
+
         void hideErrorLayout();
 
         void showErrorLayout();

@@ -6,14 +6,13 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.booksfeedjava.ApplicationComponent;
 import com.android.booksfeedjava.R;
 import com.android.booksfeedjava.base.BaseActivity;
-import com.android.booksfeedjava.component.GridLayoutSpacesItemDecoration;
 import com.android.booksfeedjava.presentation.modelview.BooksModelView;
 
 import java.util.ArrayList;
@@ -35,6 +34,15 @@ public class SearchListActivity extends BaseActivity
     @BindView(R.id.iv_clear_query)
     ImageView mIvClearQuery;
 
+    @BindView(R.id.layout_search_tutorial)
+    ConstraintLayout mLayoutSearchTutorial;
+
+    @BindView(R.id.layout_item_not_found)
+    ConstraintLayout mLayoutItemNotFound;
+
+    @BindView(R.id.layout_error)
+    ConstraintLayout mLayoutError;
+
     private SearchListAdapter mAdapter;
 
     private List<BooksModelView> mBooksModelViewList = new ArrayList<>();
@@ -46,6 +54,7 @@ public class SearchListActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         hideLeftMenu();
         initPresenter();
+        initView();
         initListener();
         initRecyclerView();
     }
@@ -67,8 +76,13 @@ public class SearchListActivity extends BaseActivity
         );
     }
 
+    private void initView() {
+        mRvBookList.setVisibility(View.GONE);
+        mLayoutSearchTutorial.setVisibility(View.VISIBLE);
+    }
+
     private void initRecyclerView() {
-        int space = getResources().getDimensionPixelSize(R.dimen.margin_s);
+//        int space = getResources().getDimensionPixelSize(R.dimen.margin_s);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mAdapter = new SearchListAdapter(this);
         mRvBookList.setAdapter(mAdapter);
@@ -84,6 +98,7 @@ public class SearchListActivity extends BaseActivity
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 retrieveBooksByQuery(v.getText().toString());
                 hideKeyboard();
+                mEtSearchQuery.clearFocus();
                 return true;
             }
             return false;
@@ -102,22 +117,35 @@ public class SearchListActivity extends BaseActivity
 
     @Override
     public void hideDisplayLayout() {
-
+        mRvBookList.setVisibility(View.GONE);
     }
 
     @Override
     public void showDisplayLayout() {
+        mLayoutSearchTutorial.setVisibility(View.GONE);
+        mRvBookList.setVisibility(View.VISIBLE);
+    }
 
+    @Override
+    public void hideSearchNotFoundLayout() {
+        mLayoutItemNotFound.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showSearchNotFoundLayout() {
+        mLayoutSearchTutorial.setVisibility(View.GONE);
+        mLayoutItemNotFound.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideErrorLayout() {
-
+        mLayoutError.setVisibility(View.GONE);
     }
 
     @Override
     public void showErrorLayout() {
-
+        mLayoutSearchTutorial.setVisibility(View.GONE);
+        mLayoutError.setVisibility(View.VISIBLE);
     }
 
     @OnTextChanged(R.id.et_search_query)

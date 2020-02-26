@@ -23,6 +23,8 @@ public class SearchListPresenter implements SearchListContract.Presenter {
     public void retrieveBooksByQuery(String keyword) {
         mView.hideDisplayLayout();
         mView.hideErrorLayout();
+        mView.hideSearchNotFoundLayout();
+
         mView.showLoadingBar();
         mUseCase.setKeyword(keyword);
         mUseCase.execute(new DisposableObserver<BooksResponse>() {
@@ -30,8 +32,12 @@ public class SearchListPresenter implements SearchListContract.Presenter {
             public void onNext(BooksResponse response) {
                 mView.hideLoadingBar();
                 if (response != null) {
-                    mView.showDisplayLayout();
-                    mView.populateBooks(BooksMapper.transform(response));
+                    if (response.getTotalItems() > 0) {
+                        mView.showDisplayLayout();
+                        mView.populateBooks(BooksMapper.transform(response));
+                    } else {
+                        mView.showSearchNotFoundLayout();
+                    }
                 } else {
                     mView.showErrorLayout();
                 }

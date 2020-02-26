@@ -1,6 +1,7 @@
 package com.android.booksfeedjava.presentation.search;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.BookViewHolder> {
+
+    private static final String EMPTY_STRING_PLACEHOLDER = "-";
 
     private SearchListItemListener mItemListener;
 
@@ -107,24 +110,30 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Bo
             if (booksModelView.getAuthors() != null) {
                 for (String author : booksModelView.getAuthors())
                     authors.append(author).append(", ");
+                if (authors.length() >= 2)
+                    mTvBookAuthors.setText(authors.substring(0, authors.length() - 2));
+            } else {
+                authors.append(EMPTY_STRING_PLACEHOLDER);
+                mTvBookAuthors.setText(authors.toString());
             }
-
-            if (authors.length() >= 2)
-                mTvBookAuthors.setText(authors.substring(0, authors.length() - 2));
-            else mTvBookAuthors.setText(authors.toString());
 
             if (booksModelView.getCategories() != null) {
                 for (String category : booksModelView.getCategories())
                     categories.append(category).append(", ");
+                if (categories.length() >= 2)
+                    mTvBookCategory.setText(categories.substring(0, categories.length() - 2));
+            } else {
+                categories.append(mContext.getString(R.string.label_not_yet_categorized));
+                mTvBookCategory.setText(categories.toString());
             }
 
-            if (categories.length() >= 2)
-                mTvBookCategory.setText(categories.substring(0, categories.length() - 2));
-            else mTvBookCategory.setText(categories.toString());
-
             mTvBookTitle.setText(booksModelView.getTitle());
-            mTvBookDescription.setText(booksModelView.getDescription());
-            mTvPublishedDate.setText(booksModelView.getPublishedDate());
+            if (!TextUtils.isEmpty(booksModelView.getDescription()))
+                mTvBookDescription.setText(booksModelView.getDescription());
+            else mTvBookDescription.setText(EMPTY_STRING_PLACEHOLDER);
+            if (!TextUtils.isEmpty(booksModelView.getPublishedDate()))
+                mTvPublishedDate.setText(booksModelView.getPublishedDate());
+            else mTvPublishedDate.setText(mContext.getString(R.string.label_not_yet_published));
             mTvPagesCount.setText(
                     mContext.getString(R.string.label_page_count, booksModelView.getPageCount()));
             mRbBookRating.setRating(booksModelView.getRating());
