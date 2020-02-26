@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.booksfeedjava.R;
 import com.android.booksfeedjava.presentation.modelview.BooksModelView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,13 +76,23 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Bo
         @BindView(R.id.tv_book_title)
         TextView mTvBookTitle;
 
+        @BindView(R.id.tv_book_authors)
+        TextView mTvBookAuthors;
+
         public BookViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
         public void bindData(BooksModelView booksModelView) {
+            StringBuilder authors = new StringBuilder();
+            for (String author : booksModelView.getAuthors())
+                authors.append(author).append(", ");
+            if (authors.length() >= 2)
+                mTvBookAuthors.setText(authors.substring(0, authors.length() - 2));
+            else mTvBookAuthors.setText(authors.toString());
             mTvBookTitle.setText(booksModelView.getTitle());
+            Picasso.get().load(booksModelView.getThumbnailUrl()).into(mIvBookThumbnail);
         }
 
     }
