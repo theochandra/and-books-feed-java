@@ -19,7 +19,7 @@
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/vertical_space_toolbar_icon" />
+            app:layout_constraintGuide_begin="@dimen/margin_horizontal_m" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_title"
@@ -33,7 +33,7 @@
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="@dimen/vertical_space_toolbar_icon" />
+            app:layout_constraintGuide_end="@dimen/margin_horizontal_m" />
 
         <ImageView
             android:id="@+id/iv_toolbar_back"

@@ -2,6 +2,7 @@ package com.android.booksfeedjava.presentation.search;
 
 import com.android.booksfeedjava.data.network.response.BooksResponse;
 import com.android.booksfeedjava.domain.usecase.RetrieveBooksByQueryUseCase;
+import com.android.booksfeedjava.presentation.mapper.BooksMapper;
 
 import io.reactivex.observers.DisposableObserver;
 
@@ -23,13 +24,14 @@ public class SearchListPresenter implements SearchListContract.Presenter {
         mView.hideDisplayLayout();
         mView.hideErrorLayout();
         mView.showLoadingBar();
+        mUseCase.setKeyword(keyword);
         mUseCase.execute(new DisposableObserver<BooksResponse>() {
             @Override
             public void onNext(BooksResponse response) {
                 mView.hideLoadingBar();
                 if (response != null) {
                     mView.showDisplayLayout();
-//                    mView.populateBooks();
+                    mView.populateBooks(BooksMapper.transform(response));
                 } else {
                     mView.showErrorLayout();
                 }

@@ -2,17 +2,32 @@
 <resources>
     <dimen name="size_0">0dp</dimen>
 
-    <!-- margin vertical start -->
-    <dimen name="vertical_space_toolbar_icon">16dp</dimen>
     <dimen name="vertical_space_toolbar_title">72dp</dimen>
-    <!-- margin vertical end -->
 
-    <!-- margin horizontal start -->
-    <dimen name="horizontal_space_l">40dp</dimen>
-    <dimen name="horizontal_space_m">20dp</dimen>
-    <dimen name="horizontal_space_s">8dp</dimen>
-    <dimen name="horizontal_space_xs">4dp</dimen>
-    <!-- margin horizontal end -->
+    <dimen name="margin_vertical_s">8dp</dimen>
+    <dimen name="margin_vertical_m">16dp</dimen>
+    <dimen name="margin_vertical_l">24dp</dimen>
+    <dimen name="margin_vertical_xl">32dp</dimen>
+
+    <dimen name="margin_horizontal_s">8dp</dimen>
+    <dimen name="margin_horizontal_m">16dp</dimen>
+    <dimen name="margin_horizontal_l">24dp</dimen>
+    <dimen name="margin_horizontal_xl">32dp</dimen>
+
+    <dimen name="padding_vertical_s">8dp</dimen>
+    <dimen name="padding_vertical_m">16dp</dimen>
+    <dimen name="padding_vertical_l">24dp</dimen>
+    <dimen name="padding_vertical_xl">32dp</dimen>
+
+    <dimen name="padding_horizontal_s">8dp</dimen>
+    <dimen name="padding_horizontal_m">16dp</dimen>
+    <dimen name="padding_horizontal_l">24dp</dimen>
+    <dimen name="padding_horizontal_xl">32dp</dimen>
+
+    <dimen name="item_movie_card_width">170dp</dimen>
+    <dimen name="item_movie_card_height">290dp</dimen>
+    <dimen name="item_movie_card_radius">8dp</dimen>
+    <dimen name="item_movie_image_height">250dp</dimen>
 
     <!-- font start -->
     <dimen name="font_size_title">20sp</dimen>

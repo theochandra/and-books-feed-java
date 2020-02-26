@@ -1,16 +1,95 @@
 package com.android.booksfeedjava.presentation.search;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import com.android.booksfeedjava.R;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class SearchListActivity extends AppCompatActivity {
+import com.android.booksfeedjava.ApplicationComponent;
+import com.android.booksfeedjava.R;
+import com.android.booksfeedjava.base.BaseActivity;
+import com.android.booksfeedjava.presentation.modelview.BooksModelView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+
+public class SearchListActivity extends BaseActivity
+    implements SearchListContract.View {
+
+    @BindView(R.id.rv_book_list)
+    RecyclerView mRvBookList;
+
+    private SearchListAdapter mAdapter;
+
+    private List<BooksModelView> mBooksModelViewList = new ArrayList<>();
+
+    private SearchListContract.Presenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_list);
+        hideLeftMenu();
+        initPresenter();
+        initRecyclerView();
+        retrieveBooksByQuery("Flower");
+    }
+
+    @Override
+    public int getContentView() {
+        return R.layout.activity_search_list;
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getString(R.string.label_search_list_title);
+    }
+
+    private void initPresenter() {
+        mPresenter = new SearchListPresenter(
+            ApplicationComponent.provideRetrieveBooksByQuery(),
+            this
+        );
+    }
+
+    private void initRecyclerView() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new SearchListAdapter(this);
+        mRvBookList.setAdapter(mAdapter);
+        mRvBookList.setLayoutManager(linearLayoutManager);
+        mAdapter.setItemListener(booksModelView -> {
+
+        });
+    }
+
+    private void retrieveBooksByQuery(String keyword) {
+        mPresenter.retrieveBooksByQuery(keyword);
+    }
+
+    @Override
+    public void populateBooks(List<BooksModelView> booksModelViewList) {
+        mAdapter.setBooksModelViewList(booksModelViewList);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void hideDisplayLayout() {
+
+    }
+
+    @Override
+    public void showDisplayLayout() {
+
+    }
+
+    @Override
+    public void hideErrorLayout() {
+
+    }
+
+    @Override
+    public void showErrorLayout() {
+
     }
 }
