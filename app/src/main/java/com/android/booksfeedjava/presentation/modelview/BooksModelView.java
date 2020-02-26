@@ -20,6 +20,8 @@ public class BooksModelView implements Parcelable {
         }
     };
 
+    private List<String> categories;
+
     private String title;
 
     private List<String> authors;
@@ -30,6 +32,10 @@ public class BooksModelView implements Parcelable {
 
     private float rating;
 
+    private String publishedDate;
+
+    private int pageCount;
+
     public BooksModelView() { }
 
     protected BooksModelView(Parcel source) {
@@ -37,8 +43,20 @@ public class BooksModelView implements Parcelable {
         thumbnailUrl    = source.readString();
         description     = source.readString();
         rating          = source.readFloat();
+        publishedDate   = source.readString();
+        pageCount       = source.readInt();
         authors         = new ArrayList<>();
+        categories      = new ArrayList<>();
         source.readList(authors, null);
+        source.readList(categories, null);
+    }
+
+    public List<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
     }
 
     public String getTitle() {
@@ -73,6 +91,22 @@ public class BooksModelView implements Parcelable {
         this.rating = rating;
     }
 
+    public String getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(String publishedDate) {
+        this.publishedDate = publishedDate;
+    }
+
+    public int getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
+
     public List<String> getAuthors() {
         return authors;
     }
@@ -92,7 +126,10 @@ public class BooksModelView implements Parcelable {
         parcel.writeString(thumbnailUrl);
         parcel.writeString(description);
         parcel.writeFloat(rating);
+        parcel.writeString(publishedDate);
+        parcel.writeInt(pageCount);
         parcel.writeList(authors);
+        parcel.writeList(categories);
     }
 
 }

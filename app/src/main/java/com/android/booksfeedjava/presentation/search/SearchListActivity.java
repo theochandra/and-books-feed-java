@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.booksfeedjava.ApplicationComponent;
@@ -68,10 +69,10 @@ public class SearchListActivity extends BaseActivity
 
     private void initRecyclerView() {
         int space = getResources().getDimensionPixelSize(R.dimen.margin_s);
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mAdapter = new SearchListAdapter(this);
         mRvBookList.setAdapter(mAdapter);
-        mRvBookList.addItemDecoration(new GridLayoutSpacesItemDecoration(space));
+//        mRvBookList.addItemDecoration(new GridLayoutSpacesItemDecoration(space));
         mRvBookList.setLayoutManager(layoutManager);
         mAdapter.setItemListener(booksModelView -> {
 
@@ -82,6 +83,7 @@ public class SearchListActivity extends BaseActivity
         mEtSearchQuery.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 retrieveBooksByQuery(v.getText().toString());
+                hideKeyboard();
                 return true;
             }
             return false;

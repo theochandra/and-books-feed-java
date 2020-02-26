@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="size_0">0dp</dimen>
+    <dimen name="size_1">1dp</dimen>
 
     <dimen name="vertical_space_toolbar_title">72dp</dimen>
 
@@ -15,10 +16,11 @@
     <dimen name="padding_l">24dp</dimen>
     <dimen name="padding_xl">48dp</dimen>
 
-    <dimen name="item_book_card_width">180dp</dimen>
-    <dimen name="item_book_card_height">340dp</dimen>
-    <dimen name="item_book_card_radius">8dp</dimen>
-    <dimen name="item_book_image_height">250dp</dimen>
+<!--    <dimen name="item_book_card_width">180dp</dimen>-->
+<!--    <dimen name="item_book_card_height">340dp</dimen>-->
+<!--    <dimen name="item_book_card_radius">8dp</dimen>-->
+    <dimen name="item_book_image_width">84dp</dimen>
+    <dimen name="item_book_image_height">96dp</dimen>
 
     <dimen name="input_box_stroke_width">1dp</dimen>
     <dimen name="input_box_height">48dp</dimen>

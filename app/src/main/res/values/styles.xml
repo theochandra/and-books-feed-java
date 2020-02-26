@@ -33,7 +33,7 @@
     <style name="CustomCardTextView" parent="Widget.AppCompat.TextView">
         <item name="android:layout_width">@dimen/size_0</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:maxLines">1</item>
+        <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
     </style>
 

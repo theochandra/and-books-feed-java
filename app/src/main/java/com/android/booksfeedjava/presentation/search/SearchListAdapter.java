@@ -74,11 +74,23 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Bo
         @BindView(R.id.iv_book_thumbnail)
         ImageView mIvBookThumbnail;
 
+        @BindView(R.id.tv_book_category)
+        TextView mTvBookCategory;
+
         @BindView(R.id.tv_book_title)
         TextView mTvBookTitle;
 
+        @BindView(R.id.tv_book_description)
+        TextView mTvBookDescription;
+
         @BindView(R.id.tv_book_authors)
         TextView mTvBookAuthors;
+
+        @BindView(R.id.tv_published_date)
+        TextView mTvPublishedDate;
+
+        @BindView(R.id.tv_pages_count)
+        TextView mTvPagesCount;
 
         @BindView(R.id.rb_book_rating)
         RatingBar mRbBookRating;
@@ -90,6 +102,7 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Bo
 
         public void bindData(BooksModelView booksModelView) {
             StringBuilder authors = new StringBuilder();
+            StringBuilder categories = new StringBuilder();
 
             if (booksModelView.getAuthors() != null) {
                 for (String author : booksModelView.getAuthors())
@@ -100,7 +113,20 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Bo
                 mTvBookAuthors.setText(authors.substring(0, authors.length() - 2));
             else mTvBookAuthors.setText(authors.toString());
 
+            if (booksModelView.getCategories() != null) {
+                for (String category : booksModelView.getCategories())
+                    categories.append(category).append(", ");
+            }
+
+            if (categories.length() >= 2)
+                mTvBookCategory.setText(categories.substring(0, categories.length() - 2));
+            else mTvBookCategory.setText(categories.toString());
+
             mTvBookTitle.setText(booksModelView.getTitle());
+            mTvBookDescription.setText(booksModelView.getDescription());
+            mTvPublishedDate.setText(booksModelView.getPublishedDate());
+            mTvPagesCount.setText(
+                    mContext.getString(R.string.label_page_count, booksModelView.getPageCount()));
             mRbBookRating.setRating(booksModelView.getRating());
 
             Picasso.get().load(booksModelView.getThumbnailUrl()).into(mIvBookThumbnail);

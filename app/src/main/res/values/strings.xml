@@ -1,6 +1,7 @@
 <resources>
     <string name="label_search_list_title">Search Book</string>
     <string name="hint_search_query">Cari buku&#8230;</string>
+    <string name="label_page_count">- %1$d halaman</string>
 
     <string name="error_message_empty_book_list">Buku dengan kata kunci yang Anda cari tidak dapat kami temukan</string>
     <string name="error_message_system_failure">Oops&#8230; terjadi kesalahan!\nSilakan ulangi beberapa saat lagi</string>
