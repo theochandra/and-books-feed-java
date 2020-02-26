@@ -78,7 +78,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void setStatusBar() {
-        StatusBarUtils.setStatusBarColor(this, R.color.colorPrimary);
+        StatusBarUtils.setStatusBarColor(this, R.color.colorPrimaryDark);
     }
 
     public void showLoadingBar() {
