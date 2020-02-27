@@ -18,7 +18,8 @@ public class LocalBooksDataSource implements BooksDataSource {
     }
 
     @Override
-    public Observable<BooksResponse> retrieveBooksByQuery(String keyword) {
+    public Observable<BooksResponse> retrieveBooksByQuery(String keyword, String printType,
+                                                          int startIndex, int maxResults) {
         return null;
     }
 

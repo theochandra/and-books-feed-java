@@ -13,6 +13,7 @@ public interface RestApi {
 
     int READ_TIMEOUT = 60;
 
-    Observable<BooksResponse> retrieveBooksByQuery(String fullUrl, String keyword);
+    Observable<BooksResponse> retrieveBooksByQuery(String fullUrl, String keyword,
+                                                   String printType, int startIndex, int maxResults);
 
 }

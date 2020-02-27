@@ -29,7 +29,7 @@ public class BooksMapper {
             booksModelView = new BooksModelView();
             booksModelView.setCategories(book.getVolumeInfo().getCategories());
             booksModelView.setTitle(book.getVolumeInfo().getTitle());
-            booksModelView.setThumbnailUrl(book.getVolumeInfo().getImageLinks().getSmallThumbnail());
+            booksModelView.setThumbnailUrl(book.getVolumeInfo().getImageLinks().getSmallThumbnail()); // todo it can be null
             booksModelView.setDescription(book.getVolumeInfo().getDescription());
             booksModelView.setPublishedDate(book.getVolumeInfo().getPublishedDate());
             booksModelView.setPageCount(book.getVolumeInfo().getPageCount());

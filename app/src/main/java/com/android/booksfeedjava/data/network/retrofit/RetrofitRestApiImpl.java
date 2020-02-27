@@ -101,8 +101,10 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<BooksResponse> retrieveBooksByQuery(String fullUrl, String keyword) {
-        return mApiService.retrieveBooksByQuery(fullUrl, keyword);
+    public Observable<BooksResponse> retrieveBooksByQuery(String fullUrl, String keyword,
+                                                          String printType, int startIndex,
+                                                          int maxResults) {
+        return mApiService.retrieveBooksByQuery(fullUrl, keyword, printType, startIndex, maxResults);
     }
 
 }

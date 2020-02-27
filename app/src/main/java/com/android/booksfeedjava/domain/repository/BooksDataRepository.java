@@ -16,8 +16,9 @@ public class BooksDataRepository implements BooksRepository {
     }
 
     @Override
-    public Observable<BooksResponse> retrieveBooksByQuery(String keyword) {
-        return mBooksCloudDataSource.retrieveBooksByQuery(keyword)
+    public Observable<BooksResponse> retrieveBooksByQuery(String keyword, String printType,
+                                                          int startIndex, int maxResults) {
+        return mBooksCloudDataSource.retrieveBooksByQuery(keyword, printType, startIndex, maxResults)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

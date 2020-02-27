@@ -10,7 +10,11 @@ public interface SearchListContract {
 
     interface View extends BaseView {
 
-        void populateBooks(List<BooksModelView> booksModelViewList);
+        void populateBooks(List<BooksModelView> booksModelViewList, int totalItems);
+
+        void hideLoadingBar();
+
+        void showLoadingBar();
 
         void hideDisplayLayout();
 

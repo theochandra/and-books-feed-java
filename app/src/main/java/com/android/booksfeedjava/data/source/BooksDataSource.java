@@ -6,6 +6,7 @@ import io.reactivex.Observable;
 
 public interface BooksDataSource {
 
-    Observable<BooksResponse> retrieveBooksByQuery(String keyword);
+    Observable<BooksResponse> retrieveBooksByQuery(String keyword, String printType,
+                                                   int startIndex, int maxResults);
 
 }

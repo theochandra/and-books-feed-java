@@ -16,9 +16,10 @@ public class CloudBooksDataSource implements BooksDataSource {
     }
 
     @Override
-    public Observable<BooksResponse> retrieveBooksByQuery(String keyword) {
+    public Observable<BooksResponse> retrieveBooksByQuery(String keyword, String printType,
+                                                          int startIndex, int maxResults) {
         String fullUrl = EndPointAddress.getBooksEndPoint(EndPointAddress.VOLUMES);
-        return mRestApi.retrieveBooksByQuery(fullUrl, keyword);
+        return mRestApi.retrieveBooksByQuery(fullUrl, keyword, printType, startIndex, maxResults);
     }
 
 }

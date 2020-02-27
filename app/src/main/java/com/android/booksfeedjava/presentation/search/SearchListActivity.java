@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.booksfeedjava.ApplicationComponent;
 import com.android.booksfeedjava.R;
 import com.android.booksfeedjava.base.BaseActivity;
+import com.android.booksfeedjava.component.EndlessScrollListener;
 import com.android.booksfeedjava.presentation.modelview.BooksModelView;
 
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ import butterknife.OnTextChanged;
 
 public class SearchListActivity extends BaseActivity
     implements SearchListContract.View {
+
+    private static final int ITEM_INVISIBLE_THRESHOLD = 1;
 
     @BindView(R.id.rv_book_list)
     RecyclerView mRvBookList;
@@ -48,6 +51,10 @@ public class SearchListActivity extends BaseActivity
     private List<BooksModelView> mBooksModelViewList = new ArrayList<>();
 
     private SearchListContract.Presenter mPresenter;
+
+    private boolean mSeamlessFetchValid;
+
+    private int mCurrentPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +98,17 @@ public class SearchListActivity extends BaseActivity
         mAdapter.setItemListener(booksModelView -> {
 
         });
+
+        EndlessScrollListener endlessScrollListener = new EndlessScrollListener(
+            layoutManager, ITEM_INVISIBLE_THRESHOLD) {
+            @Override
+            public void onLoadMore() {
+                if (mSeamlessFetchValid)
+                    loadMoreData();
+            }
+        };
+        endlessScrollListener.setLoadMoreEnable(true);
+        mRvBookList.addOnScrollListener(endlessScrollListener);
     }
 
     private void initListener() {
@@ -105,14 +123,32 @@ public class SearchListActivity extends BaseActivity
         });
     }
 
+    private void loadMoreData() {
+        retrieveBooksByQuery("res");
+    }
+
     private void retrieveBooksByQuery(String keyword) {
         mPresenter.retrieveBooksByQuery(keyword);
     }
 
     @Override
-    public void populateBooks(List<BooksModelView> booksModelViewList) {
-        mAdapter.setBooksModelViewList(booksModelViewList);
-        mAdapter.notifyDataSetChanged();
+    public void populateBooks(List<BooksModelView> booksModelViewList, int totalItems) {
+        mSeamlessFetchValid = mAdapter.getItemCount() < totalItems;
+        mAdapter.setFooterEnabled(mSeamlessFetchValid);
+//        mAdapter.setBooksModelViewList(booksModelViewList);
+
+        for (BooksModelView booksModelView : booksModelViewList)
+            mAdapter.addData(booksModelView);
+    }
+
+    @Override
+    public void hideLoadingBar() {
+//        super.hideLoadingBar();
+    }
+
+    @Override
+    public void showLoadingBar() {
+//        super.showLoadingBar();
     }
 
     @Override

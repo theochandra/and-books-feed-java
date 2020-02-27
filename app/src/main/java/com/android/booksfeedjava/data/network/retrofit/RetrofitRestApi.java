@@ -10,11 +10,14 @@ import retrofit2.http.Url;
 
 public interface RetrofitRestApi {
 
-    public static final String REUQEST_HEADER_CONTENT_TYPE = "Content-Type: application/json";
+    public static final String REQUEST_HEADER_CONTENT_TYPE = "Content-Type: application/json";
 
-    @Headers({REUQEST_HEADER_CONTENT_TYPE})
+    @Headers({REQUEST_HEADER_CONTENT_TYPE})
     @GET
     Observable<BooksResponse> retrieveBooksByQuery(@Url String fullUrl,
-                                                   @Query("q") String keyword);
+                                                   @Query("q") String keyword,
+                                                   @Query("printType") String printType,
+                                                   @Query("startIndex") int startIndex,
+                                                   @Query("maxResults") int maxResults);
 
 }

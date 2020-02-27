@@ -10,6 +10,12 @@ public class RetrieveBooksByQueryUseCase extends UseCase {
 
     private String keyword;
 
+    private String printType;
+
+    private int startIndex;
+
+    private int maxResults;
+
     public RetrieveBooksByQueryUseCase(BooksRepository booksRepository) {
         mBooksRepository = booksRepository;
     }
@@ -18,9 +24,21 @@ public class RetrieveBooksByQueryUseCase extends UseCase {
         this.keyword = keyword;
     }
 
+    public void setPrintType(String printType) {
+        this.printType = printType;
+    }
+
+    public void setStartIndex(int startIndex) {
+        this.startIndex = startIndex;
+    }
+
+    public void setMaxResults(int maxResults) {
+        this.maxResults = maxResults;
+    }
+
     @Override
     protected Observable buildUseCaseObservable() {
-        return mBooksRepository.retrieveBooksByQuery(keyword);
+        return mBooksRepository.retrieveBooksByQuery(keyword, printType, startIndex, maxResults);
     }
 
 }
