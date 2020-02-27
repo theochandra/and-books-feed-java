@@ -44,7 +44,12 @@ public class SearchListPresenter implements SearchListContract.Presenter {
             public void onNext(BooksResponse response) {
                 mView.hideLoadingBar();
                 if (response != null) {
-                    if (!response.getItems().isEmpty() && response.getItems() != null) {
+                    if (response.getTotalItems() == 0) {
+                        mView.showSearchNotFoundLayout();
+                        return;
+                    }
+
+                    if (response.getItems() != null) {
                         mView.setFooterEnabled(true);
                         mView.showDisplayLayout();
                         mView.populateBooks(BooksMapper.transform(response));

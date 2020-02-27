@@ -166,7 +166,9 @@ public class SearchListAdapter extends RecyclerView.Adapter {
                     mContext.getString(R.string.label_page_count, booksModelView.getPageCount()));
             mRbBookRating.setRating(booksModelView.getRating());
 
-            Picasso.get().load(booksModelView.getThumbnailUrl()).into(mIvBookThumbnail);
+            Picasso.get().load(booksModelView.getThumbnailUrl())
+                    .placeholder(R.drawable.image_placeholder)
+                    .into(mIvBookThumbnail);
         }
 
     }
