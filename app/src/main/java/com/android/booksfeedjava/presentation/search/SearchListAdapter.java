@@ -29,8 +29,6 @@ public class SearchListAdapter extends RecyclerView.Adapter {
 
     private static final int CONTENT_VIEW = 200;
 
-    private static final String EMPTY_STRING_PLACEHOLDER = "-";
-
     private SearchListItemListener mItemListener;
 
     private List<BooksModelView> mBooksModelViewList;

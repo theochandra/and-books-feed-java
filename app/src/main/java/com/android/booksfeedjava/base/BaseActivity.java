@@ -2,10 +2,8 @@ package com.android.booksfeedjava.base;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;

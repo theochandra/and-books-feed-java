@@ -10,7 +10,7 @@ import retrofit2.http.Url;
 
 public interface RetrofitRestApi {
 
-    public static final String REQUEST_HEADER_CONTENT_TYPE = "Content-Type: application/json";
+    String REQUEST_HEADER_CONTENT_TYPE = "Content-Type: application/json";
 
     @Headers({REQUEST_HEADER_CONTENT_TYPE})
     @GET
