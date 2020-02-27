@@ -26,35 +26,34 @@ public class SearchListPresenter implements SearchListContract.Presenter {
     }
 
     @Override
-    public void retrieveBooksByQuery(String keyword) {
-        mView.hideDisplayLayout();
+    public void retrieveBooksByQuery(String keyword, boolean showLoading) {
         mView.hideErrorLayout();
         mView.hideSearchNotFoundLayout();
-        mView.showLoadingBar();
+
+        if (showLoading) {
+            mView.hideDisplayLayout();
+            mView.showLoadingBar();
+        }
 
         mUseCase.setKeyword(keyword);
         mUseCase.setStartIndex(mStartIndex);
         mUseCase.setPrintType(PARAM_PRINT_TYPE);
         mUseCase.setMaxResults(PARAM_MAX_RESULTS);
-
         mUseCase.execute(new DisposableObserver<BooksResponse>() {
             @Override
             public void onNext(BooksResponse response) {
                 mView.hideLoadingBar();
                 if (response != null) {
                     if (!response.getItems().isEmpty() && response.getItems() != null) {
+                        mView.setFooterEnabled(true);
                         mView.showDisplayLayout();
-                        mView.populateBooks(BooksMapper.transform(response), response.getTotalItems());
+                        mView.populateBooks(BooksMapper.transform(response));
                         mStartIndex += PARAM_MAX_RESULTS;
                     } else {
-                        mView.showSearchNotFoundLayout();
+                        mView.setFooterEnabled(false);
                     }
-
-//                    if (response.getTotalItems() > 0 ) {
-//
-//                    }
                 } else {
-                    mView.showErrorLayout();
+                    mView.showSearchNotFoundLayout();
                 }
             }
 

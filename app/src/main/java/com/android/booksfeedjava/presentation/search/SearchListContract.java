@@ -10,11 +10,9 @@ public interface SearchListContract {
 
     interface View extends BaseView {
 
-        void populateBooks(List<BooksModelView> booksModelViewList, int totalItems);
+        void populateBooks(List<BooksModelView> booksModelViewList);
 
-        void hideLoadingBar();
-
-        void showLoadingBar();
+        void setFooterEnabled(boolean isFooterEnabled);
 
         void hideDisplayLayout();
 
@@ -32,7 +30,7 @@ public interface SearchListContract {
 
     interface Presenter extends BasePresenter {
 
-        void retrieveBooksByQuery(String keyword);
+        void retrieveBooksByQuery(String keyword, boolean showLoading);
 
     }
 

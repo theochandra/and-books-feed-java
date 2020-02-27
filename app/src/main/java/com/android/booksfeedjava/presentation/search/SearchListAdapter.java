@@ -48,11 +48,6 @@ public class SearchListAdapter extends RecyclerView.Adapter {
         mItemListener = itemListener;
     }
 
-    public void setBooksModelViewList(List<BooksModelView> booksModelViewList) {
-        mBooksModelViewList.addAll(booksModelViewList);
-        notifyDataSetChanged();
-    }
-
     public void addData(BooksModelView booksModelView) {
         mBooksModelViewList.add(booksModelView);
         notifyItemInserted(getItemCount() - 1);

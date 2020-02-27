@@ -16,7 +16,6 @@ import com.android.booksfeedjava.base.BaseActivity;
 import com.android.booksfeedjava.component.EndlessScrollListener;
 import com.android.booksfeedjava.presentation.modelview.BooksModelView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -48,13 +47,11 @@ public class SearchListActivity extends BaseActivity
 
     private SearchListAdapter mAdapter;
 
-    private List<BooksModelView> mBooksModelViewList = new ArrayList<>();
-
     private SearchListContract.Presenter mPresenter;
 
-    private boolean mSeamlessFetchValid;
+    private String mKeyword;
 
-    private int mCurrentPage;
+    private boolean mSeamlessFetchValid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,11 +86,9 @@ public class SearchListActivity extends BaseActivity
     }
 
     private void initRecyclerView() {
-//        int space = getResources().getDimensionPixelSize(R.dimen.margin_s);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mAdapter = new SearchListAdapter(this);
         mRvBookList.setAdapter(mAdapter);
-//        mRvBookList.addItemDecoration(new GridLayoutSpacesItemDecoration(space));
         mRvBookList.setLayoutManager(layoutManager);
         mAdapter.setItemListener(booksModelView -> {
 
@@ -114,9 +109,11 @@ public class SearchListActivity extends BaseActivity
     private void initListener() {
         mEtSearchQuery.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                retrieveBooksByQuery(v.getText().toString());
+                mKeyword = v.getText().toString();
+                retrieveBooksByQuery(mKeyword, true);
                 hideKeyboard();
                 mEtSearchQuery.clearFocus();
+                mAdapter.clearData();
                 return true;
             }
             return false;
@@ -124,31 +121,24 @@ public class SearchListActivity extends BaseActivity
     }
 
     private void loadMoreData() {
-        retrieveBooksByQuery("res");
+        retrieveBooksByQuery(mKeyword, false);
     }
 
-    private void retrieveBooksByQuery(String keyword) {
-        mPresenter.retrieveBooksByQuery(keyword);
+    private void retrieveBooksByQuery(String keyword, boolean showLoading) {
+        mPresenter.retrieveBooksByQuery(keyword, showLoading);
     }
 
     @Override
-    public void populateBooks(List<BooksModelView> booksModelViewList, int totalItems) {
-        mSeamlessFetchValid = mAdapter.getItemCount() < totalItems;
+    public void populateBooks(List<BooksModelView> booksModelViewList) {
         mAdapter.setFooterEnabled(mSeamlessFetchValid);
-//        mAdapter.setBooksModelViewList(booksModelViewList);
 
         for (BooksModelView booksModelView : booksModelViewList)
             mAdapter.addData(booksModelView);
     }
 
     @Override
-    public void hideLoadingBar() {
-//        super.hideLoadingBar();
-    }
-
-    @Override
-    public void showLoadingBar() {
-//        super.showLoadingBar();
+    public void setFooterEnabled(boolean isFooterEnabled) {
+        mSeamlessFetchValid = isFooterEnabled;
     }
 
     @Override
@@ -194,6 +184,12 @@ public class SearchListActivity extends BaseActivity
     @OnClick(R.id.iv_clear_query)
     public void onClearQueryClicked() {
         mEtSearchQuery.setText("");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPresenter.destroy();
     }
 
 }
