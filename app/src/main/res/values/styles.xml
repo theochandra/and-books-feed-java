@@ -46,6 +46,32 @@
         <item name="android:textSize">@dimen/font_size_s</item>
     </style>
 
+    <style name="CustomTextViewAppearance" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">@dimen/size_0</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="CustomTextViewBold" parent="CustomTextViewAppearance">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CustomTextViewNormal" parent="CustomTextViewAppearance">
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="CustomTextViewBoldTitle" parent="CustomTextViewBold">
+        <item name="android:textSize">@dimen/font_size_title</item>
+    </style>
+
+    <style name="CustomTextViewNormalDescription" parent="CustomTextViewNormal">
+        <item name="android:textSize">@dimen/font_size_s</item>
+    </style>
+
+    <style name="CustomTextViewNormalAllCaps" parent="CustomTextViewNormal">
+        <item name="android:textSize">@dimen/font_size_m</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
     <style name="CustomInputBox" parent="Widget.AppCompat.EditText">
         <item name="android:textSize">@dimen/font_size_m</item>
         <item name="android:paddingLeft">@dimen/padding_m</item>

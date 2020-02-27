@@ -20,11 +20,11 @@ public class BooksModelView implements Parcelable {
         }
     };
 
-    private List<String> categories;
+    private String categories;
 
     private String title;
 
-    private List<String> authors;
+    private String authors;
 
     private String thumbnailUrl;
 
@@ -45,17 +45,15 @@ public class BooksModelView implements Parcelable {
         rating          = source.readFloat();
         publishedDate   = source.readString();
         pageCount       = source.readInt();
-        authors         = new ArrayList<>();
-        categories      = new ArrayList<>();
-        source.readList(authors, null);
-        source.readList(categories, null);
+        authors         = source.readString();
+        categories      = source.readString();
     }
 
-    public List<String> getCategories() {
+    public String getCategories() {
         return categories;
     }
 
-    public void setCategories(List<String> categories) {
+    public void setCategories(String categories) {
         this.categories = categories;
     }
 
@@ -107,11 +105,11 @@ public class BooksModelView implements Parcelable {
         this.pageCount = pageCount;
     }
 
-    public List<String> getAuthors() {
+    public String getAuthors() {
         return authors;
     }
 
-    public void setAuthors(List<String> authors) {
+    public void setAuthors(String authors) {
         this.authors = authors;
     }
 
@@ -128,8 +126,8 @@ public class BooksModelView implements Parcelable {
         parcel.writeFloat(rating);
         parcel.writeString(publishedDate);
         parcel.writeInt(pageCount);
-        parcel.writeList(authors);
-        parcel.writeList(categories);
+        parcel.writeString(authors);
+        parcel.writeString(categories);
     }
 
 }

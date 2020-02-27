@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.booksfeedjava.presentation.detail.BookDetailActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/toolbar" />
+
+    <!-- guidline -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="@dimen/size_0"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/margin_m" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="@dimen/size_0"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/margin_m" />
+
+    <ImageView
+        android:id="@+id/iv_book_thumbnail"
+        android:layout_width="@dimen/book_image_width"
+        android:layout_height="@dimen/book_image_height"
+        android:layout_marginTop="@dimen/margin_l"
+        app:layout_constraintRight_toRightOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+
+    <TextView
+        android:id="@+id/tv_book_title"
+        tools:text="Title"
+        style="@style/CustomTextViewBoldTitle"
+        android:layout_marginRight="@dimen/margin_m"
+        app:layout_constraintTop_toTopOf="@id/iv_book_thumbnail"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toLeftOf="@+id/iv_book_thumbnail" />
+
+    <TextView
+        android:id="@+id/tv_book_category"
+        tools:text="Category"
+        style="@style/CustomTextViewNormalAllCaps"
+        android:layout_marginTop="@dimen/margin_l"
+        android:layout_marginRight="@dimen/margin_m"
+        app:layout_constraintTop_toBottomOf="@id/tv_book_title"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toLeftOf="@+id/iv_book_thumbnail" />
+
+    <RatingBar
+        android:id="@+id/rb_book_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_l"
+        style="?android:attr/ratingBarStyleSmall"
+        android:numStars="5"
+        android:stepSize="0.1"
+        app:layout_constraintTop_toBottomOf="@id/tv_book_category"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left" />
+
+    <TextView
+        android:id="@+id/tv_book_authors"
+        tools:text="Authors"
+        style="@style/CustomTextViewNormalDescription"
+        android:layout_marginTop="@dimen/margin_s"
+        android:layout_marginRight="@dimen/margin_m"
+        app:layout_constraintTop_toBottomOf="@id/rb_book_rating"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toLeftOf="@+id/iv_book_thumbnail" />
+
+    <TextView
+        android:id="@+id/tv_published_date"
+        tools:text="Published date"
+        style="@style/CustomTextViewNormalDescription"
+        android:layout_marginTop="@dimen/margin_s"
+        android:layout_marginRight="@dimen/margin_m"
+        app:layout_constraintTop_toBottomOf="@id/tv_book_authors"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toLeftOf="@+id/iv_book_thumbnail" />
+
+    <TextView
+        android:id="@+id/tv_pages_count"
+        tools:text="Pages count"
+        style="@style/CustomTextViewNormalDescription"
+        android:layout_marginTop="@dimen/margin_s"
+        android:layout_marginRight="@dimen/margin_m"
+        app:layout_constraintTop_toBottomOf="@id/tv_published_date"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toLeftOf="@+id/iv_book_thumbnail" />
+
+    <TextView
+        android:id="@+id/tv_book_description_label"
+        android:text="@string/label_book_description"
+        android:textStyle="bold"
+        android:textSize="@dimen/font_size_s"
+        style="@style/CustomTextViewNormalAllCaps"
+        android:layout_marginTop="@dimen/margin_l"
+        android:layout_marginRight="@dimen/margin_m"
+        app:layout_constraintTop_toBottomOf="@id/tv_pages_count"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toLeftOf="@+id/iv_book_thumbnail" />
+
+    <TextView
+        android:id="@+id/tv_book_description"
+        tools:text="Description"
+        style="@style/CustomTextViewNormalDescription"
+        android:layout_marginTop="@dimen/margin_s"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toRightOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/tv_book_description_label" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

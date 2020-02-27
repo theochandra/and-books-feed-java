@@ -19,6 +19,9 @@
     <dimen name="item_book_image_width">84dp</dimen>
     <dimen name="item_book_image_height">96dp</dimen>
 
+    <dimen name="book_image_width">168dp</dimen>
+    <dimen name="book_image_height">192dp</dimen>
+
     <dimen name="input_box_stroke_width">1dp</dimen>
     <dimen name="input_box_height">48dp</dimen>
     <dimen name="input_box_radius">22dp</dimen>
@@ -26,7 +29,7 @@
     <dimen name="progress_bar_size">48dp</dimen>
 
     <!-- font start -->
-    <dimen name="font_size_title">20sp</dimen>
+    <dimen name="font_size_title">24sp</dimen>
     <dimen name="font_size_l">20sp</dimen>
     <dimen name="font_size_m">16sp</dimen>
     <dimen name="font_size_s">12sp</dimen>

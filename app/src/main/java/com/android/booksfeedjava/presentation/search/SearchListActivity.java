@@ -1,5 +1,6 @@
 package com.android.booksfeedjava.presentation.search;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -14,6 +15,7 @@ import com.android.booksfeedjava.ApplicationComponent;
 import com.android.booksfeedjava.R;
 import com.android.booksfeedjava.base.BaseActivity;
 import com.android.booksfeedjava.component.EndlessScrollListener;
+import com.android.booksfeedjava.presentation.detail.BookDetailActivity;
 import com.android.booksfeedjava.presentation.modelview.BooksModelView;
 
 import java.util.List;
@@ -91,7 +93,8 @@ public class SearchListActivity extends BaseActivity
         mRvBookList.setAdapter(mAdapter);
         mRvBookList.setLayoutManager(layoutManager);
         mAdapter.setItemListener(booksModelView -> {
-
+            Intent intent = BookDetailActivity.newIntent(this, booksModelView);
+            startActivity(intent);
         });
 
         EndlessScrollListener endlessScrollListener = new EndlessScrollListener(

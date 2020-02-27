@@ -132,36 +132,15 @@ public class SearchListAdapter extends RecyclerView.Adapter {
         }
 
         public void bindData(BooksModelView booksModelView) {
-            StringBuilder authors = new StringBuilder();
-            StringBuilder categories = new StringBuilder();
-
-            if (booksModelView.getAuthors() != null) {
-                for (String author : booksModelView.getAuthors())
-                    authors.append(author).append(", ");
-                if (authors.length() >= 2)
-                    mTvBookAuthors.setText(authors.substring(0, authors.length() - 2));
-            } else {
-                authors.append(EMPTY_STRING_PLACEHOLDER);
-                mTvBookAuthors.setText(authors.toString());
-            }
-
-            if (booksModelView.getCategories() != null) {
-                for (String category : booksModelView.getCategories())
-                    categories.append(category).append(", ");
-                if (categories.length() >= 2)
-                    mTvBookCategory.setText(categories.substring(0, categories.length() - 2));
-            } else {
-                categories.append(mContext.getString(R.string.label_not_yet_categorized));
-                mTvBookCategory.setText(categories.toString());
-            }
-
+            mTvBookAuthors.setText(booksModelView.getAuthors());
+            mTvBookCategory.setText(booksModelView.getCategories());
             mTvBookTitle.setText(booksModelView.getTitle());
-            if (!TextUtils.isEmpty(booksModelView.getDescription()))
-                mTvBookDescription.setText(booksModelView.getDescription());
-            else mTvBookDescription.setText(EMPTY_STRING_PLACEHOLDER);
+            mTvBookDescription.setText(booksModelView.getDescription());
+
             if (!TextUtils.isEmpty(booksModelView.getPublishedDate()))
                 mTvPublishedDate.setText(booksModelView.getPublishedDate());
             else mTvPublishedDate.setText(mContext.getString(R.string.label_not_yet_published));
+
             mTvPagesCount.setText(
                     mContext.getString(R.string.label_page_count, booksModelView.getPageCount()));
             mRbBookRating.setRating(booksModelView.getRating());
